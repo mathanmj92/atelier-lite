@@ -8,6 +8,7 @@
   "scripts": {
     "sync": "node scripts/sync-apps.mjs",
     "start": "electron .",
+    "test": "node --test tests/core.test.cjs",
     "dist:win": "node scripts/sync-apps.mjs && electron-builder --win nsis"
   },
   "devDependencies": {
