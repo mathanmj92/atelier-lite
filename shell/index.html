@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atelier Lite</title>
+    <link rel="stylesheet" href="./shell.css" />
+  </head>
+  <body><div id="dragbar"></div>
+    <!-- the right end of the top row, left of the window buttons -->
+    <div id="topbar">
+      <button id="ai-top" class="ai-chip" hidden title="AI assistant (Alt+A)"></button>
+      <button id="lock-btn" class="tb-btn" hidden title="Lock this workspace now"></button>
+      <button id="settings-btn" class="tb-icon" title="Settings: appearance, AI, security, performance" aria-label="Settings"></button>
+      <button id="help-btn" class="tb-icon" title="Help, shortcuts and reporting a problem (F1)" aria-label="Help"></button>
+    </div>
+
+    <main id="welcome" hidden aria-label="Welcome">
+      <div class="w-in">
+        <div class="w-brand"><span class="logo"></span><b>Atelier Lite</b></div>
+        <h1>Welcome</h1>
+        <p class="sub">Documents, slides, sheets and PDFs in one workspace. Choose where your files live.</p>
+        <div class="w-actions">
+          <button id="w-create" class="w-card primary">
+            <span class="w-ico">＋</span>
+            <b>Create workspace</b>
+            <span>Pick a folder. Your documents, slides and sheets are kept in it.</span>
+          </button>
+          <button id="w-open" class="w-card">
+            <span class="w-ico">⌂</span>
+            <b>Open workspace</b>
+            <span>Open an Atelier workspace file (.atle) and carry on where you left off.</span>
+          </button>
+        </div>
+        <p class="w-alt"><button id="w-folder" class="linkbtn">Open an existing folder as a workspace…</button></p>
+        <p id="w-msg" class="w-msg" hidden></p>
+        <section>
+          <h2>Recent workspaces</h2>
+          <div id="w-recent" class="w-recent"></div>
+          <p id="w-none" class="empty" hidden>Workspaces you create or open will appear here.</p>
+        </section>
+        <footer class="w-foot">
+          <button id="w-report" class="linkbtn">Report a problem</button>
+          <span>·</span>
+          <button id="w-help" class="linkbtn">Help &amp; About</button>
+        </footer>
+      </div>
+    </main>
+
+    <main id="home" aria-label="Home">
+      <div class="home-in">
+        <header class="home-head">
+          <div>
+            <h1>Good <span id="tod">day</span></h1>
+            <p class="sub"><b id="proj-name"></b> <span id="proj-saved" class="muted"></span></p>
+          </div>
+          <div class="home-tools">
+            <input id="search" type="search" placeholder="Search files…" aria-label="Search files" />
+          </div>
+        </header>
+        <section>
+          <h2>Start something new</h2>
+          <div id="cards" class="cards"></div>
+        </section>
+        <section>
+          <div class="files-head">
+            <h2>Workspace files</h2>
+            <div id="chips" class="chips" role="group" aria-label="Filter by app"></div>
+          </div>
+          <div id="files" class="files"></div>
+          <p id="empty" class="empty" hidden>No files yet. Create something in any app and it appears here.</p>
+        </section>
+        <footer class="home-foot">
+          <button id="h-report" class="linkbtn">Report a problem</button>
+          <span>·</span>
+          <button id="h-help" class="linkbtn">Help &amp; About</button>
+        </footer>
+      </div>
+    </main>
+    <div id="menu" class="menu" hidden></div>
+    <script src="./common.js"></script>
+    <script src="./shell.js"></script>
+  </body>
+</html>

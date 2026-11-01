@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atelier</title>
+    <link rel="stylesheet" href="./shell.css" />
+  </head>
+  <body class="solo">
+    <div id="solo-bar">
+      <span id="solo-ico" class="tab-ico">A</span>
+      <span id="solo-title" class="solo-title">Atelier</span>
+      <span class="spacer"></span>
+      <button id="solo-ws" class="solo-btn" title="Open Atelier with your workspace and projects">Open workspace</button>
+    </div>
+    <script src="./common.js"></script>
+    <script>
+      const apply = (i) => {
+        if (!i) return;
+        $('solo-ico').textContent = i.appName[0];
+        $('solo-ico').style.background = i.color;
+        $('solo-title').textContent = i.title;
+        $('solo-ws').hidden = !!i.workspace;
+      };
+      api.soloInfo().then(apply);
+      api.on('ui:solo', apply);
+      $('solo-ws').onclick = () => api.openWorkspace();
+    </script>
+  </body>
+</html>

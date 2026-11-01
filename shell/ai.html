@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI assistant</title>
+    <link rel="stylesheet" href="./shell.css" />
+  </head>
+  <body class="embed">
+    <aside id="ai" aria-label="AI assistant">
+      <header class="ai-head">
+        <b>AI assistant</b>
+        <span id="ai-prov" class="ai-prov"></span>
+        <span class="spacer"></span>
+        <button id="ai-new" class="icon-btn" title="New chat" aria-label="New chat">↺</button>
+        <button id="ai-cfg" class="icon-btn" title="AI settings" aria-label="AI settings">⚙</button>
+        <button id="ai-close" class="icon-btn" title="Close (Alt+A)" aria-label="Close assistant">×</button>
+      </header>
+      <div id="ai-log" class="ai-log" aria-live="polite"></div>
+      <div class="ai-foot">
+        <div id="reading" class="reading">
+          <div class="session-head">
+            <b>Reading</b><span id="reading-count" class="muted-count"></span>
+            <span class="spacer"></span>
+            <button id="session-add" class="mini" title="Add a workspace file (or type @ in the message)">+ Add file</button>
+          </div>
+          <div id="reading-chips" class="chips-row"></div>
+          <button id="ai-edit" class="edit-btn" hidden title="Open this app's assistant, which can read and change the document you have open (every change can be undone)">✎ Edit this document with the assistant</button>
+          <div id="session-pick" class="pick" hidden>
+            <input id="pick-q" type="search" placeholder="Search workspace files…" autocomplete="off" />
+            <div id="pick-list" class="pick-list"></div>
+          </div>
+        </div>
+        <div id="ai-quick" class="quick" hidden></div>
+        <div class="ai-opts">
+          <label id="ai-ask-row" title="Let the assistant ask a few short questions, or show a plan, before it starts a bigger job">
+            <input type="checkbox" id="ai-ask" /> Ask before acting
+          </label>
+          <label id="ai-agent-row" title="Let Claude Code or Codex read and edit files in your workspace folder">
+            <input type="checkbox" id="ai-agent" /> Allow editing workspace files
+          </label>
+        </div>
+        <div class="ai-compose">
+          <textarea id="ai-in" rows="2" placeholder="Ask anything. Type @ to add a file."></textarea>
+          <button id="ai-send" class="send" aria-label="Send">➤</button>
+        </div>
+        <div id="mention" class="pick mention" hidden></div>
+      </div>
+    </aside>
+    <script src="./common.js"></script>
+    <script src="./ai.js"></script>
+  </body>
+</html>

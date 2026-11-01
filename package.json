@@ -1,0 +1,78 @@
+{
+  "name": "atelier-lite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Atelier Lite - documents, slides, spreadsheets and PDFs in one workspace.",
+  "author": "Atelier",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "sync": "node scripts/sync-apps.mjs",
+    "start": "electron .",
+    "dist:win": "node scripts/sync-apps.mjs && electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3",
+    "png-to-ico": "^3.0.2"
+  },
+  "build": {
+    "appId": "com.atelier.lite",
+    "productName": "Atelier Lite",
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "apps/**/*",
+      "shell/**/*",
+      "shim/**/*",
+      "electron/**/*",
+      "package.json",
+      "docs/**/*"
+    ],
+    "fileAssociations": [
+      {
+        "name": "Word document",
+        "ext": "docx",
+        "role": "Editor"
+      },
+      {
+        "name": "Presentation",
+        "ext": "pptx",
+        "role": "Editor"
+      },
+      {
+        "name": "Spreadsheet",
+        "ext": "xlsx",
+        "role": "Editor"
+      },
+      {
+        "name": "PDF",
+        "ext": "pdf",
+        "role": "Editor"
+      },
+      {
+        "ext": "atle",
+        "name": "Atelier Lite workspace",
+        "role": "Editor"
+      }
+    ],
+    "copyright": "Copyright (c) Atelier"
+  },
+  "dependencies": {
+    "docx": "^9.13.0",
+    "exceljs": "^4.4.0",
+    "fflate": "^0.8.3",
+    "marked": "^18.1.1",
+    "pdfjs-dist": "^6.4.299",
+    "pptxgenjs": "^4.0.1"
+  }
+}
