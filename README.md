@@ -6,7 +6,7 @@ Atelier Lite is a Windows desktop suite that puts a word processor, a slide edit
 
 Made for people who work with ordinary Office files every day and want one calm place to do it, on any PC, including older and low-spec ones.
 
-> Status: **private repository, version 1.0.0.** The site is in [`atelier-lite-site`](https://github.com/mathanmj92/atelier-lite-site). A licence has not been chosen yet; see [Licence](#licence).
+> Status: **version 1.0.0.** The website is in [`atelier-lite-site`](https://github.com/mathanmj92/atelier-lite-site). A licence has not been chosen yet; see [Licence](#licence).
 
 ![Documents](docs/images/documents.png)
 
@@ -91,6 +91,6 @@ Electron 45 with one `WebContentsView` per tab. The full picture is in [`docs/AR
 
 ## Licence
 
-The repository is **private and has no licence yet**. Atelier Lite bundles four web apps and several libraries that each have their own licence, listed in [`docs/NOTICES.md`](docs/NOTICES.md) and inside each `apps/<name>/` folder. A licence for Atelier Lite's own code will be added after the licences of those bundled apps have been checked against their upstream sources, and before the repository is made public.
+This repository has **no licence yet**, so by default all rights are reserved: you can read the code, but reuse and redistribution are not permitted until one is added. Atelier Lite bundles four web apps and several libraries that each have their own licence, listed in [`docs/NOTICES.md`](docs/NOTICES.md) and inside each `apps/<name>/` folder. A licence for Atelier Lite's own code will be added once the licences of those bundled apps have been checked against their upstream sources.
 
 "Claude", "Codex", "Ollama", "LM Studio" and other product names belong to their owners. Atelier Lite only connects to tools you choose to install or sign in to.

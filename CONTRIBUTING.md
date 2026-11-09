@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping with Atelier Lite. The repository is private for now, so this is for people who have been given access.
+Thanks for helping with Atelier Lite.
 
 ## Getting started
 

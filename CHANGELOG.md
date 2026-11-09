@@ -19,6 +19,11 @@ First release. Atelier Lite is Atelier 2.6.0 with the four office apps only.
 - Asks to save the session when the window is closed; Report a problem.
 - A user guide that opens as a Word document.
 
+### Fixed before release
+- Text on accent-coloured buttons and cards (such as Create workspace) is now dark in dark mode, so it is easy to read.
+- Fixed a typo in the Security settings ("I vclose") and made the app name consistent as Atelier Lite in Settings, Security and About.
+- The About page no longer claims the app never contacts a server; it says it does not check for updates by itself.
+
 ### Not included
 Forms, Markdown, Notes and Whiteboard are part of the full Atelier and are not in Lite.
 

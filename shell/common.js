@@ -31,6 +31,7 @@ function applyPalette(p) {
   set('--muted', p.muted);
   set('--line', p.line);
   set('--accent', p.accent);
+  set('--accent-ink', p.accentInk || '#fff');
   set('--side', p.side);
   set('--side-hover', p.sideHover);
   set('--side-on', p.sideOn);

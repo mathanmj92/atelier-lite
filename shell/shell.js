@@ -143,7 +143,7 @@ $('w-create').onclick = async () => {
   if (!dir) return;
   const info = await api.ws.inspect(dir);
   // A folder that already holds a lot is probably not meant to become a workspace (Downloads, Desktop...).
-  if (!info.hasProject && info.items > 25 && !confirm('This folder already holds ' + info.items + ' items.\n\nAtelier will add its own folders inside it (Documents, Presentations, Spreadsheets...) and list the files it can open. Use it anyway?\n\nTip: an empty folder keeps things tidy.')) return;
+  if (!info.hasProject && info.items > 25 && !confirm('This folder already holds ' + info.items + ' items.\n\nAtelier Lite will add its own folders inside it (Documents, Presentations, Spreadsheets...) and list the files it can open. Use it anyway?\n\nTip: an empty folder keeps things tidy.')) return;
   const r = await startWith(api.ws.switch(dir));
   if (r && r.ok) api.ws.save();
 };

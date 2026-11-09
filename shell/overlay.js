@@ -152,7 +152,7 @@ async function showSettings(host) {
       x.onclick = close;
       box.append(el('header', {}, el('b', { textContent: 'AI settings' }), x), body);
     }
-    body.append(el('p', { className: 'sub', textContent: 'Pick one provider. It powers the assistant panel, and it is the only AI in Atelier.' }));
+    body.append(el('p', { className: 'sub', textContent: 'Pick one provider. It powers the assistant panel, and it is the only AI in Atelier Lite.' }));
     const field = (id, label, value, type = 'text', ph = '', attrs = {}) => {
       const input = el('input', { type, value: value || '', placeholder: ph, ...attrs });
       fields[id] = input;
@@ -463,7 +463,7 @@ function showRecoveryKey(key, done) {
   ok.onclick = done;
   vaultModal(
     'Your recovery key',
-    el('p', { className: 'sub', textContent: 'If you forget your secret, this key opens the project. It is shown only now. Without your secret or this key, nobody can open the files, including Atelier.' }),
+    el('p', { className: 'sub', textContent: 'If you forget your secret, this key opens the project. It is shown only now. Without your secret or this key, nobody can open the files, including Atelier Lite.' }),
     el('div', { className: 'recovery-key', textContent: key }),
     el('div', { className: 'row-btns' }, copy),
     el('label', { className: 'chk' }, chk, 'I have saved it somewhere safe, such as a password manager or on paper.'),
@@ -494,11 +494,11 @@ function showVaultOff() {
   };
   vaultModal(
     'Protect this project',
-    el('p', { className: 'sub', textContent: 'Anyone who opens Atelier, or this folder, can read your files. A lock encrypts every file in the project and asks for your secret to open them. It is optional, and you choose the kind of secret.' }),
+    el('p', { className: 'sub', textContent: 'Anyone who opens Atelier Lite, or this folder, can read your files. A lock encrypts every file in the project and asks for your secret to open them. It is optional, and you choose the kind of secret.' }),
     ...form.nodes,
     el('hr'),
     el('label', { className: 'fld' }, 'Lock by itself when idle', idle),
-    el('label', { className: 'chk' }, quit, 'Lock when I vclose Atelier or switch project'),
+    el('label', { className: 'chk' }, quit, 'Lock when I close Atelier Lite or switch project'),
     el('label', { className: 'chk' }, screen, 'Lock when Windows locks or goes to sleep'),
     err,
     el('div', { className: 'row-btns' }, go, Object.assign(el('button', { className: 'btn', textContent: 'Not now' }), { onclick: vclose })),
@@ -528,7 +528,7 @@ function showVaultOn(s) {
     el('div', { className: 'row-btns' }, lock, change, rec, off),
     el('hr'),
     el('label', { className: 'fld' }, 'Lock by itself when idle', idle),
-    el('label', { className: 'chk' }, quit, 'Lock when I vclose Atelier or switch project'),
+    el('label', { className: 'chk' }, quit, 'Lock when I close Atelier Lite or switch project'),
     el('label', { className: 'chk' }, screen, 'Lock when Windows locks or goes to sleep'),
     el('p', { className: 'sub vault-note', textContent: 'File names and the project file (.atle) stay readable; what is inside the files is encrypted. Files in other folders are not covered.' }),
   );
@@ -609,7 +609,7 @@ async function showAbout(startTab = 'about') {
       guide.onclick = async () => (await api.about.openGuide(), close());
       const read = el('button', { className: 'btn', textContent: 'Read the guide' });
       read.onclick = () => ((tab = 'guide'), draw());
-      pane.append(table, el('p', { className: 'about-updates' }, el('b', { textContent: 'Updates. ' }), 'Atelier doesn’t contact any server. A new version arrives as a new installer: run it over this one and your settings and workspace are kept.'), el('div', { className: 'row-btns' }, read, guide));
+      pane.append(table, el('p', { className: 'about-updates' }, el('b', { textContent: 'Updates. ' }), 'Atelier Lite doesn’t check for updates by itself. A new version arrives as a new installer: run it over this one and your settings and workspace are kept.'), el('div', { className: 'row-btns' }, read, guide));
     } else if (tab === 'keys') {
       const table = el('table', { className: 'about-facts keys' });
       for (const [k, v] of SHORTCUTS) table.append(el('tr', {}, el('th', {}, el('kbd', { textContent: k })), el('td', { textContent: v })));
@@ -652,7 +652,7 @@ async function showReport() {
   const info = await api.about.info();
   const cat = el('select', {}, ...['Something is broken', 'Something is confusing', 'I have an idea', 'Other'].map((t) => el('option', { textContent: t })));
   const text = el('textarea', { placeholder: 'What happened? What did you expect? Steps to repeat it help a lot.', maxLength: 1500 });
-  const facts = `Atelier ${info.version} · ${info.platform} · Electron ${info.electron}`;
+  const facts = `Atelier Lite ${info.version} · ${info.platform} · Electron ${info.electron}`;
   const box = formModal(
     'Report a problem',
     [
@@ -665,7 +665,7 @@ async function showReport() {
         onclick: async (e) => {
           const b = e.currentTarget;
           try {
-            await navigator.clipboard.writeText(`To: mathannits92@gmail.com\nSubject: Atelier ${info.version}: ${cat.value}\n\n${text.value}\n\n---\n${facts}`);
+            await navigator.clipboard.writeText(`To: mathannits92@gmail.com\nSubject: Atelier Lite ${info.version}: ${cat.value}\n\n${text.value}\n\n---\n${facts}`);
             b.textContent = 'Copied. Paste it into an email.';
           } catch {
             b.textContent = 'Could not copy';
@@ -747,7 +747,7 @@ async function showSettingsDialog(start) {
   };
   const panes = {
     general: () => [
-      row('When Atelier starts', 'The welcome screen lets you pick a workspace; or go straight back to the last one.', seg('startup', [['welcome', 'Welcome screen'], ['last', 'Last workspace']])),
+      row('When Atelier Lite starts', 'The welcome screen lets you pick a workspace; or go straight back to the last one.', seg('startup', [['welcome', 'Welcome screen'], ['last', 'Last workspace']])),
       row('Folder for new workspaces', draft.defaultFolder || 'Next to your current workspace', Object.assign(el('button', { className: 'btn', textContent: 'Change…' }), { onclick: async () => { const f = await api.ws.chooseFolder(); if (f) ((draft.defaultFolder = f), draw(), foot()); } })),
       row('Ask to save the session when closing', 'So your open tabs are there next time. A stray click on the cross loses nothing.', toggle('askSave', 'Ask to save the session when closing')),
     ],
@@ -790,7 +790,7 @@ async function showSettingsDialog(start) {
     about: async () => {
       const i = await api.about.info();
       return [
-        row('Atelier ' + i.version, i.platform + ', Electron ' + i.electron, Object.assign(el('button', { className: 'btn', textContent: 'About and what’s new' }), { onclick: () => showAbout('about') })),
+        row('Atelier Lite ' + i.version, i.platform + ', Electron ' + i.electron, Object.assign(el('button', { className: 'btn', textContent: 'About and what’s new' }), { onclick: () => showAbout('about') })),
         row('User guide', 'How everything works, with shortcuts.', Object.assign(el('button', { className: 'btn', textContent: 'Read it' }), { onclick: () => showAbout('guide') })),
         row('Report a problem', 'Opens an email to the developer with your note and these details filled in.', Object.assign(el('button', { className: 'btn', textContent: 'Report…' }), { onclick: () => showReport() })),
       ];
